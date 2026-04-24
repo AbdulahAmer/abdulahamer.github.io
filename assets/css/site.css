@@ -217,7 +217,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 	margin: 0 0 1rem;
 }
 .portrait img {
-	width: 72px; height: 72px;
+	width: 96px; height: 96px;
 	border-radius: 50%;
 	object-fit: cover;
 	border: 2px solid var(--surface);
@@ -308,7 +308,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 /* about */
 .about-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 	gap: 1.75rem;
 }
 .about-grid p { font-size: 1.02rem; }
