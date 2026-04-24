@@ -5,6 +5,23 @@
 	const y = document.getElementById('year');
 	if (y) y.textContent = String(new Date().getFullYear());
 
+	// Theme toggle (defaults to light; toggle persists choice)
+	const root = document.documentElement;
+	const themeBtn = document.querySelector('.theme-toggle');
+	const currentTheme = () => root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+	const applyTheme = (t, persist) => {
+		root.setAttribute('data-theme', t);
+		if (themeBtn) {
+			themeBtn.setAttribute('aria-pressed', String(t === 'dark'));
+			themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+		}
+		if (persist) { try { localStorage.setItem('theme', t); } catch (e) {} }
+	};
+	applyTheme(currentTheme(), false);
+	if (themeBtn) {
+		themeBtn.addEventListener('click', () => applyTheme(currentTheme() === 'dark' ? 'light' : 'dark', true));
+	}
+
 	// Scroll-spy for sticky nav
 	const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
 	if (!navLinks.length) return;
